@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { registerSW } from 'virtual:pwa-register';
 import { router } from './app/router';
+import { RepositoryProviders } from './app/RepositoryProviders';
 import { database } from './db/instance';
 import { requestPersistentStorage } from './db/requestPersistentStorage';
 import './styles/tokens.css';
@@ -19,6 +20,8 @@ if (!rootElement) throw new Error('Missing #root element');
 
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <RepositoryProviders>
+      <RouterProvider router={router} />
+    </RepositoryProviders>
   </StrictMode>,
 );
