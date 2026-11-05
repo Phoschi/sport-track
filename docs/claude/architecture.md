@@ -6,11 +6,12 @@ src/
   main.tsx              bootstrap : SW, ouverture DB, stockage persistant, router
   app/                  shell (AppLayout, nav), router, StatsPage, NotFoundPage — composition root
   db/                   database.ts (schéma Dexie versionné), instance.ts (connexion unique)
-  shared/domain/        utilitaires purs : parisDate, formatNumber, id, settings
-  shared/ui/            composants génériques
+  shared/domain/        utilitaires purs : parisDate, formatNumber, id, settings, swapAdjacent
+  shared/data/          contrat Observable (compatible liveQuery Dexie)
+  shared/ui/            Button, BottomSheet (<dialog>), Stepper, ChipGroup, useObservable
   features/<feature>/   program · workout · body · progress · export · home
     domain/             types + fonctions pures (testées)
-    data/               interface repository + impl Dexie (à partir de la phase 2)
+    data/               interfaces repository + impl Dexie (factory qui reçoit la DB) + contexte React
     ui/                 pages et composants
   styles/               tokens.css (design tokens), base.css
 ```
@@ -19,13 +20,13 @@ Tests : `*.test.ts` à côté du code.
 ## Navigation
 4 onglets en bas : Accueil `/`, Programmes `/programs`, Corps `/body`, Stats `/stats`.
 - Stats = `app/StatsPage` qui assemble `progress/ui/ProgressSection` et `export/ui/ExportSection`. Seul le shell (`app/`) a le droit de combiner deux features.
+- Programmes : `/programs` (liste), `/programs/:programId` (éditeur complet, feuilles en bas d'écran), `/programs/exercises` (catalogue).
 - Saisie de séance `/workout…` : pas d'onglet. Lancée depuis l'accueil (séance du jour / prochaine) ou depuis un programme.
 
 ## Règles de dépendance
 - `ui` → `domain` + interface de repository. Jamais `db/` directement.
 - `domain` → rien (pur).
 - Une feature peut importer le `domain` d'une autre, jamais son `ui` ni son `data`.
-- `db/instance.ts` n'est importé que par les repositories et `main.tsx`.
 - Migration serveur : nouvelles impls de repository, branchées dans le composition root.
 
 ## Modèle de données (Dexie, schéma v1)
@@ -41,6 +42,16 @@ Tests : `*.test.ts` à côté du code.
 
 Types : `features/*/domain/types.ts`, `shared/domain/settings.ts`.
 Conventions : ids UUID ; jours `YYYY-MM-DD` heure de Paris ; horodatages ISO ; poids en kg décimal.
+
+## Injection des repositories
+- Chaque feature expose ses interfaces + un contexte (`features/program/data/ProgramRepositoriesContext.tsx`).
+- `app/RepositoryProviders.tsx` (composition root) instancie les impls Dexie et monte les providers.
+- Les impls Dexie reçoivent la DB en paramètre (tests sur une base `fake-indexeddb` isolée).
+- `db/instance.ts` n'est importé que par `main.tsx` et `RepositoryProviders`.
+
+## Feature program
+- Domaine pur : `exerciseName` (normalisation, doublons), `searchExercises`, `repRange`, `exerciseStatus` (« not trained anymore »), `sessionEditing` (exos d'une séance + règles superset), `programEditing` (séances), `mainProgram`, `errors`.
+- Superset : drapeau `supersetWithNext` sur l'exo du haut. Toute paire dont un membre change (retrait, déplacement) est déliée ; le dernier exo n'a jamais de drapeau.
 
 ## Flux
 Page → hook de feature → interface repository → impl Dexie → IndexedDB.

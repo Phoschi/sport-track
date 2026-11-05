@@ -9,17 +9,18 @@
 - [x] Vitest (dates Paris, nombres, ids, schéma DB)
 - [x] `vercel.json` (rewrite SPA)
 - [x] Docs
-- [ ] Déploiement Vercel — à faire par le propriétaire (import du repo)
+- [x] Déploiement Vercel (prod : branche `dev`)
 
-## Phase 2 — Catalogue + programmes
-- [ ] Repositories exercise / program / settings (+ tests fake-indexeddb)
-- [ ] CRUD exos, autocomplétion anti-doublon, renommage
-- [ ] Mention « not trained anymore » (calculée)
-- [ ] CRUD programmes, séances (nom, jour), exos planifiés (description, séries, fourchette reps), ordre
-- [ ] Superset avec l'exo suivant
-- [ ] Programme principal
+## Phase 2 — Catalogue + programmes ✅ (PR vers `dev`)
+- [x] Repositories exercise / program (+ tests fake-indexeddb)
+- [x] CRUD exos, autocomplétion anti-doublon, renommage, suppression gardée
+- [x] Mention « not trained anymore » (calculée)
+- [x] CRUD programmes, séances (nom, jour), exos planifiés (description, séries, fourchette reps), ordre
+- [x] Superset (suivant à l'édition, précédent à l'ajout)
+- [x] Programme principal (auto au premier, changeable, non supprimable)
 
 ## Phase 3 — Saisie de séance
+- [ ] Bouton « Démarrer cette séance » depuis un programme
 - [ ] Préremplissage série par série (dernière fois, chauffe exclue)
 - [ ] Segments, chauffe, série en plus, saut d'exo, notes
 - [ ] Sauvegarde continue
