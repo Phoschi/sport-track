@@ -12,3 +12,6 @@
 - **`window.confirm`** aussi pour Terminer/Annuler la séance.
 - **Pas d'avertissement si deux onglets éditent la même séance** (cas improbable sur iPhone).
 - **Récap sans deltas** : arrivent en phase 7.
+- **Pas de migration de backup** tant que `SCHEMA_VERSION` = 1 : à écrire au premier changement de schéma.
+- **Validation de backup superficielle** : un fichier modifié à la main mais de bonne forme générale peut passer.
+- **Partage iOS non testable en automatique** (Chromium headless = téléchargement) : à vérifier sur iPhone.

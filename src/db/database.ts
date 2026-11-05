@@ -3,6 +3,7 @@ import type { Exercise, Program } from '../features/program/domain/types';
 import type { Workout } from '../features/workout/domain/types';
 import type { BodyWeight, Measurement, MeasurementSite } from '../features/body/domain/types';
 import type { SettingRecord } from '../shared/domain/settings';
+import { SCHEMA_VERSION } from '../shared/domain/schemaVersion';
 
 export const DATABASE_NAME = 'gym-tracker';
 
@@ -19,7 +20,7 @@ export class GymDatabase extends Dexie {
   constructor(name = DATABASE_NAME) {
     super(name);
     // Only indexed fields are listed; every other field is stored as-is.
-    this.version(1).stores({
+    this.version(SCHEMA_VERSION).stores({
       exercises: 'id, name',
       programs: 'id',
       workouts: 'id, date, *exerciseIds',

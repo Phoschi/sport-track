@@ -1,0 +1,14 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.panel h3 { margin: 0; }
+.panel p { margin: 0; }
+
+.overdue { color: var(--color-warning); }
