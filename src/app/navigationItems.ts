@@ -1,10 +1,9 @@
 export type NavigationItem = { path: string; label: string };
 
+// Workout entry has no tab: it is started from Home or from a program.
 export const NAVIGATION_ITEMS: readonly NavigationItem[] = [
   { path: '/', label: 'Accueil' },
-  { path: '/workout', label: 'Séance' },
   { path: '/programs', label: 'Programmes' },
   { path: '/body', label: 'Corps' },
-  { path: '/progress', label: 'Progrès' },
-  { path: '/export', label: 'Export' },
+  { path: '/stats', label: 'Stats' },
 ];

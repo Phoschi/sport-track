@@ -5,3 +5,6 @@
 - Vérifié : typecheck, 15 tests, build, Playwright (iPhone 13) — navigation, SW, rechargement et deep link hors ligne, base `gym-tracker` créée, 0 erreur console.
 - En cours : rien.
 - Prochaine étape : déploiement Vercel par le propriétaire ; réponses aux questions ouvertes de phase 3 ; phase 2.
+- Phase 1 mergée dans `dev`, en prod sur https://sport-track-ten.vercel.app.
+- Fait : workflow git dans CLAUDE.md ; nav passée à 4 onglets (Accueil, Programmes, Corps, Stats).
+- Prochaine étape : plan de la phase 2 (`feat/programs`).

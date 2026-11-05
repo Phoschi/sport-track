@@ -3,6 +3,8 @@
 PWA de suivi muscu mono-utilisateur (iPhone, Safari, écran d'accueil), hors ligne, données en IndexedDB.
 Le propriétaire décide du produit et de l'architecture ; Claude gère la technique et fait des rapports clairs.
 
+Production : https://sport-track-ten.vercel.app
+
 **Lire en début de session :** ce fichier, puis `docs/claude/progress.md` et `docs/claude/roadmap.md`.
 
 ## Règles
@@ -18,6 +20,13 @@ Le propriétaire décide du produit et de l'architecture ; Claude gère la techn
 - Fonctionnel > joli. Thème sombre via design tokens CSS centralisés.
 - Point produit ambigu → demander. Ne jamais trancher seul.
 - Fin de chaque tâche : mettre à jour `roadmap.md` et `progress.md` (+ `decisions.md`, `bugs.md`, `tech-debt.md` si pertinent). Concis.
+
+## Workflow git
+- `dev` = production : chaque push est déployé automatiquement sur Vercel.
+- **Ne jamais pusher directement sur `dev`.**
+- Une branche par phase ou par tâche, au nom explicite (`feat/programs`, `fix/…`, `chore/…`).
+- Fin de phase/tâche : PR vers `dev`. Le propriétaire relit et merge lui-même.
+- Chaque PR a une URL de preview Vercel : c'est elle qu'on teste sur iPhone.
 
 ## Commandes
 ```bash

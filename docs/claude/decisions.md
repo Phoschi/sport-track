@@ -14,3 +14,5 @@ Format : date — choix — pourquoi — alternatives écartées.
 - **2026-11-05 — Graphiques : uPlot (phase 7).** ~45 ko, sans dépendance. Écarté : Chart.js (plus lourd), Recharts (D3).
 - **2026-11-05 — Backup JSON remonté en phase 4** (validé) : protéger les données dès la saisie réelle.
 - **2026-11-05 — Icônes générées depuis `public/favicon.svg`** via le Chromium de l'environnement (pas de dépendance). PNG pleins bords : iOS arrondit lui-même.
+- **2026-11-05 — Navigation à 4 onglets** (Accueil, Programmes, Corps, Stats) — décision du propriétaire. 6 onglets trop serrés en 390 px. Stats regroupe progression + exports ; la saisie de séance se lance depuis l'accueil ou un programme, pas d'onglet.
+- **2026-11-05 — Workflow git** : `dev` = production Vercel ; une branche par phase/tâche ; PR vers `dev` relue et mergée par le propriétaire ; jamais de push direct sur `dev`.
