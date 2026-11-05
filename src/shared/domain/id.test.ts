@@ -14,7 +14,7 @@ describe('createId', () => {
 
   it('falls back when randomUUID is unavailable (non-secure context)', () => {
     const realCrypto = globalThis.crypto;
-    const getRandomValues = vi.fn(<T extends ArrayBufferView>(array: T) => realCrypto.getRandomValues(array));
+    const getRandomValues = vi.fn((array: Uint8Array<ArrayBuffer>) => realCrypto.getRandomValues(array));
     vi.stubGlobal('crypto', { getRandomValues });
     expect(createId()).toMatch(UUID_V4);
     expect(getRandomValues).toHaveBeenCalledOnce();
