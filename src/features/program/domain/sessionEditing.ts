@@ -18,8 +18,16 @@ function withExercises(session: SessionTemplate, exercises: PlannedExercise[]): 
   return { ...session, exercises: withLastUnlinked(exercises) };
 }
 
-export function addPlannedExercise(session: SessionTemplate, exercise: PlannedExercise): SessionTemplate {
-  return withExercises(session, [...session.exercises, exercise]);
+export function addPlannedExercise(
+  session: SessionTemplate,
+  exercise: PlannedExercise,
+  linkToPrevious = false,
+): SessionTemplate {
+  const previousIndex = session.exercises.length - 1;
+  const exercises = session.exercises.map((existing, index) =>
+    linkToPrevious && index === previousIndex ? { ...existing, supersetWithNext: true } : existing,
+  );
+  return withExercises(session, [...exercises, exercise]);
 }
 
 export function updatePlannedExercise(

@@ -18,6 +18,14 @@ describe('addPlannedExercise', () => {
     expect(layout(addPlannedExercise(session('A', [planned('a')]), planned('b')))).toBe('a b');
   });
 
+  it('can link the new exercise to the previous one', () => {
+    expect(layout(addPlannedExercise(session('A', [planned('a'), planned('b')]), planned('c'), true))).toBe('a b>c');
+  });
+
+  it('ignores the link request on an empty session', () => {
+    expect(layout(addPlannedExercise(session('A'), planned('a'), true))).toBe('a');
+  });
+
   it('never leaves a superset flag on the last exercise', () => {
     expect(layout(addPlannedExercise(session('A'), planned('a', true)))).toBe('a');
   });
