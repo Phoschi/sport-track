@@ -48,7 +48,7 @@ describe('dexieExerciseRepository', () => {
     const inWorkout = await repository.create('Row');
     await database.programs.add(program('p', [session('A', [planned('1', false, inProgram.id)])]));
     await database.workouts.add({
-      id: 'w', date: '2026-11-02', startedAt: '', note: '', sessionName: 'A', exerciseIds: [inWorkout.id], exercises: [],
+      id: 'w', date: '2026-11-02', startedAt: '', note: '', programId: 'p', sessionTemplateId: 'A', sessionName: 'A', exerciseIds: [inWorkout.id], exercises: [],
     });
 
     expect(await repository.getUsage(inProgram.id)).toEqual({ programCount: 1, workoutCount: 0 });

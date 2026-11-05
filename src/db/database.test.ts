@@ -11,7 +11,7 @@ describe('GymDatabase schema v1', () => {
 
   it('finds workouts by exercise through the multi-entry index', async () => {
     database = new GymDatabase('test-multi-entry');
-    const base = { startedAt: '', note: '', sessionName: 'A', exercises: [] };
+    const base = { startedAt: '', note: '', programId: 'p', sessionTemplateId: 'A', sessionName: 'A', exercises: [] };
     await database.workouts.bulkAdd([
       { ...base, id: 'w1', date: '2026-11-02', exerciseIds: ['squat', 'row'] },
       { ...base, id: 'w2', date: '2026-11-04', exerciseIds: ['bench'] },
