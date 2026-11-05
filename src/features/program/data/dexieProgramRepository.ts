@@ -26,7 +26,7 @@ export function createDexieProgramRepository(database: GymDatabase): ProgramRepo
 
   return {
     watchAll: () => liveQuery(() => database.programs.toCollection().sortBy('createdAt')),
-    watchById: (id) => liveQuery(() => database.programs.get(id)),
+    watchById: (id) => liveQuery(async () => (await database.programs.get(id)) ?? null),
     watchMainProgramId: () => liveQuery(readMainProgramId),
 
     create: (name) =>

@@ -3,7 +3,8 @@ import type { Program } from '../domain/types';
 
 export interface ProgramRepository {
   watchAll(): Observable<Program[]>;
-  watchById(id: string): Observable<Program | undefined>;
+  /** Emits null when the program does not exist. */
+  watchById(id: string): Observable<Program | null>;
   watchMainProgramId(): Observable<string | undefined>;
   /** The first program ever created becomes the main one. Throws EmptyNameError. */
   create(name: string): Promise<Program>;
