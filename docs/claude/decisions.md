@@ -30,3 +30,7 @@ Format : date — choix — pourquoi — alternatives écartées.
 - **2026-11-05 — État local + écriture à chaque saisie** (file sérialisée) plutôt que `liveQuery` pendant la saisie : pas de saut de curseur, pas d'écritures désordonnées.
 - **2026-11-05 — Séance en cours détectée par scan** (`finishedAt` absent) : quelques centaines de séances par an, pas besoin d'index.
 - **2026-11-05 — Le repository workout lit `programs` et `exercises` directement** (impl Dexie) pour le snapshot et les noms : l'UI workout ne dépend pas de la feature program.
+- **2026-11-05 — Questions en fin de rapport** (propriétaire) : pendant le dev, choix provisoires réversibles notés dans `questions.md` ; toutes les questions posées en fin de rapport.
+- **2026-11-05 — Backup : validation maison sans dépendance** (contrôles de forme superficiels sur les champs utilisés par les index et l'UI). Écarté : zod (dépendance pour un seul usage).
+- **2026-11-05 — Restauration atomique** dans une transaction Dexie : un fichier corrompu ne laisse jamais une base à moitié écrite.
+- **2026-11-05 — `lastExportAt` = date du backup restauré** après une restauration (les données correspondent à cet export).

@@ -61,6 +61,12 @@ Conventions : ids UUID ; jours `YYYY-MM-DD` heure de Paris ; horodatages ISO ; p
 - Saisie : `useWorkoutEditor` = état local + écriture immédiate sérialisée à chaque changement + écriture au passage en arrière-plan.
 - Domaine : `setEditing`, `workoutEditing`, `workoutStatus` (skip calculé, proposition « Terminer » d'une séance oubliée), `supersetBlocks`, `formatSet`.
 
+## Feature export (backup)
+- Format : `{ format: 'gym-tracker-backup', schemaVersion, exportedAt, tables: { …toutes les tables } }`. `SCHEMA_VERSION` partagé avec Dexie (`shared/domain/schemaVersion.ts`) : une nouvelle version Dexie impose une migration de backup.
+- `parseBackup` valide le fichier (format, version ≤ actuelle, forme minimale de chaque enregistrement) avant tout écrit.
+- `BackupRepository.replaceAll` vide et réécrit toutes les tables dans une seule transaction (tout ou rien).
+- `backupAge` : jours calendaires Paris depuis `lastExportAt`, en retard au-delà de 7 jours ou si jamais fait.
+
 ## Flux
 Page → hook de feature → interface repository → impl Dexie → IndexedDB.
 Calculs (préremplissage, deltas, PR, tendances, exports) = fonctions pures sur données chargées.

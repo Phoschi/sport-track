@@ -12,3 +12,6 @@
 - Prochaine étape : relecture/merge des PR ; réponses aux questions de phase 3 ; phase 3.
 - Phase 3 faite sur `feat/workout-logging` : saisie de séance. 104 tests, build OK, parcours Playwright iPhone 13 OK (0 erreur console).
 - Prochaine étape : relecture/merge ; phase 4 (backup JSON).
+- Phase 4 faite sur `feat/backup` : backup JSON export/restauration. 119 tests, build OK, parcours Playwright iPhone 13 OK.
+- Nouveau : `questions.md` (choix provisoires + questions des phases suivantes).
+- Prochaine étape : réponses aux questions de phase 5, puis phase 5 (accueil + rotation).
