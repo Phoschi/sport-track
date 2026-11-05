@@ -4,7 +4,7 @@
 ```
 src/
   main.tsx              bootstrap : SW, ouverture DB, stockage persistant, router
-  app/                  shell (AppLayout, nav), router, NotFoundPage — composition root
+  app/                  shell (AppLayout, nav), router, StatsPage, NotFoundPage — composition root
   db/                   database.ts (schéma Dexie versionné), instance.ts (connexion unique)
   shared/domain/        utilitaires purs : parisDate, formatNumber, id, settings
   shared/ui/            composants génériques
@@ -15,6 +15,11 @@ src/
   styles/               tokens.css (design tokens), base.css
 ```
 Tests : `*.test.ts` à côté du code.
+
+## Navigation
+4 onglets en bas : Accueil `/`, Programmes `/programs`, Corps `/body`, Stats `/stats`.
+- Stats = `app/StatsPage` qui assemble `progress/ui/ProgressSection` et `export/ui/ExportSection`. Seul le shell (`app/`) a le droit de combiner deux features.
+- Saisie de séance `/workout…` : pas d'onglet. Lancée depuis l'accueil (séance du jour / prochaine) ou depuis un programme.
 
 ## Règles de dépendance
 - `ui` → `domain` + interface de repository. Jamais `db/` directement.
