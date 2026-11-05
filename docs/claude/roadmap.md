@@ -25,6 +25,9 @@
 - [ ] Segments, chauffe, série en plus, saut d'exo, notes
 - [ ] Sauvegarde continue
 
+## Plus tard
+- [ ] Corriger une séance terminée (historique)
+
 ## Phase 4 — Backup JSON
 - [ ] Export complet + import (+ `lastExportAt`)
 
@@ -34,8 +37,6 @@
 ## Phase 8 — Exports Claude / PMH / historique
 
 ## Questions produit ouvertes
-- Séance « faite » : bouton « Terminer » ? Une séance commencée non terminée compte ? (phase 3)
-- Séance hors programme autorisée ? (phase 3)
 - Prochaine séance = première non faite de la semaine dans l'ordre, même si son jour est passé ? (phase 5)
 - Mensurations saisissables un autre jour que samedi ? (phase 6)
 - Seuil poids du corps : proposé |Δ| < 0,2 kg = stagne (phase 6)
