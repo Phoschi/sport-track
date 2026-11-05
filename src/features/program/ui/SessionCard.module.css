@@ -75,3 +75,15 @@
   font-size: var(--font-size-sm);
   font-weight: 700;
 }
+
+.start {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-target);
+  border-radius: var(--radius-md);
+  background: var(--color-primary-strong);
+  color: var(--color-text);
+  font-weight: 600;
+  text-decoration: none;
+}
