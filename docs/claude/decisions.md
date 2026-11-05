@@ -24,3 +24,9 @@ Format : date — choix — pourquoi — alternatives écartées.
 - **2026-11-05 — Sauvegarde immédiate** dans l'éditeur (nom au blur, jour au tap) : pas de bouton « Enregistrer » à oublier.
 - **2026-11-05 — Réactivité via `liveQuery` derrière un contrat `Observable` maison** : l'UI ne connaît pas Dexie ; une impl serveur pourra fournir le même contrat.
 - **2026-11-05 — Doublons et recherche calculés en mémoire** (catalogue < 200 exos). Pas de nom normalisé stocké.
+- **2026-11-05 — Phase 3, règles produit (propriétaire)** : voir `spec.md` § Règles de saisie. Exo sauté volontairement = rempli pour la proposition « Terminer » ; « Démarrer » sur toutes les séances de tous les programmes.
+- **2026-11-05 — Préremplissage stocké en brouillon** dans la séance (`isValidated: false`) plutôt que recalculé à l'affichage : survit à la fermeture de l'app, une seule source de vérité.
+- **2026-11-05 — Segments en `number | null`** pour représenter les champs vides ; seuls les helpers de séries validées exposent des valeurs non-nullables aux calculs.
+- **2026-11-05 — État local + écriture à chaque saisie** (file sérialisée) plutôt que `liveQuery` pendant la saisie : pas de saut de curseur, pas d'écritures désordonnées.
+- **2026-11-05 — Séance en cours détectée par scan** (`finishedAt` absent) : quelques centaines de séances par an, pas besoin d'index.
+- **2026-11-05 — Le repository workout lit `programs` et `exercises` directement** (impl Dexie) pour le snapshot et les noms : l'UI workout ne dépend pas de la feature program.

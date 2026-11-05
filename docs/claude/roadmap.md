@@ -19,11 +19,13 @@
 - [x] Superset (suivant à l'édition, précédent à l'ajout)
 - [x] Programme principal (auto au premier, changeable, non supprimable)
 
-## Phase 3 — Saisie de séance
-- [ ] Bouton « Démarrer cette séance » depuis un programme
-- [ ] Préremplissage série par série (dernière fois, chauffe exclue)
-- [ ] Segments, chauffe, série en plus, saut d'exo, notes
-- [ ] Sauvegarde continue
+## Phase 3 — Saisie de séance ✅ (PR vers `dev`)
+- [x] Bouton « Démarrer » sur chaque séance ; une seule séance en cours (Reprendre / Supprimer et démarrer)
+- [x] Préremplissage série par série (dernière séance réellement faite, chauffe/skip/brouillons exclus)
+- [x] Validation ✓ par série ; segments ; chauffe ; série en plus avec rappel de fourchette ; saut d'exo ; notes exo et séance
+- [x] Sauvegarde continue (chaque saisie + passage en arrière-plan)
+- [x] Terminer (skip marqué), Annuler, récap
+- [x] Accueil minimal : bandeau séance en cours + « Terminer » d'une séance oubliée entièrement remplie
 
 ## Plus tard
 - [ ] Corriger une séance terminée (historique)

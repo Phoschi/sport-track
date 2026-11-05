@@ -21,7 +21,8 @@ Tests : `*.test.ts` à côté du code.
 4 onglets en bas : Accueil `/`, Programmes `/programs`, Corps `/body`, Stats `/stats`.
 - Stats = `app/StatsPage` qui assemble `progress/ui/ProgressSection` et `export/ui/ExportSection`. Seul le shell (`app/`) a le droit de combiner deux features.
 - Programmes : `/programs` (liste), `/programs/:programId` (éditeur complet, feuilles en bas d'écran), `/programs/exercises` (catalogue).
-- Saisie de séance `/workout…` : pas d'onglet. Lancée depuis l'accueil (séance du jour / prochaine) ou depuis un programme.
+- Saisie de séance : pas d'onglet. `/workout/start/:programId/:sessionId` (bouton « Démarrer » d'une carte de séance) crée la séance puis redirige vers `/workout/:workoutId` (saisie, puis récap une fois terminée).
+- Accueil `/` = `app/HomeRoute` qui assemble `workout/ui/CurrentWorkoutBanner` (séance en cours) et `home/ui/HomePage`.
 
 ## Règles de dépendance
 - `ui` → `domain` + interface de repository. Jamais `db/` directement.
@@ -34,7 +35,7 @@ Tests : `*.test.ts` à côté du code.
 |---|---|---|
 | `exercises` | `id`, `name` | `Exercise` |
 | `programs` | `id` | `Program` (séances embarquées) |
-| `workouts` | `id`, `date`, `*exerciseIds` | `Workout` (exos + séries + snapshot du plan embarqués) |
+| `workouts` | `id`, `date`, `*exerciseIds` | `Workout` (exos + séries brouillon/validées + snapshot du plan embarqués) |
 | `bodyWeights` | `date` | `BodyWeight` |
 | `measurementSites` | `id`, `order` | `MeasurementSite` (archivage au lieu de suppression) |
 | `measurements` | `[date+siteId]`, `siteId`, `date` | `Measurement` |
@@ -52,6 +53,13 @@ Conventions : ids UUID ; jours `YYYY-MM-DD` heure de Paris ; horodatages ISO ; p
 ## Feature program
 - Domaine pur : `exerciseName` (normalisation, doublons), `searchExercises`, `repRange`, `exerciseStatus` (« not trained anymore »), `sessionEditing` (exos d'une séance + règles superset), `programEditing` (séances), `mainProgram`, `errors`.
 - Superset : drapeau `supersetWithNext` sur l'exo du haut. Toute paire dont un membre change (retrait, déplacement) est déliée ; le dernier exo n'a jamais de drapeau.
+
+## Feature workout
+- Séance = document `Workout` : snapshot du plan, `previousSetCount` par exo, séries `{ isWarmup, isValidated, segments: { weightKg|null, reps|null }[] }`. En cours = `finishedAt` absent ; une seule à la fois (garanti par `start`).
+- Préremplissage au démarrage depuis la dernière séance où l'exo a des séries de travail validées (`lastPerformance`, `prefill`, `createWorkout`), stocké en brouillon.
+- Seules les séries **validées et complètes** comptent (`completedWorkingSets`) : base des deltas/PR à venir.
+- Saisie : `useWorkoutEditor` = état local + écriture immédiate sérialisée à chaque changement + écriture au passage en arrière-plan.
+- Domaine : `setEditing`, `workoutEditing`, `workoutStatus` (skip calculé, proposition « Terminer » d'une séance oubliée), `supersetBlocks`, `formatSet`.
 
 ## Flux
 Page → hook de feature → interface repository → impl Dexie → IndexedDB.

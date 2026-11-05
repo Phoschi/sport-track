@@ -10,3 +10,5 @@
 - Prochaine étape : plan de la phase 2 (`feat/programs`).
 - Phase 2 faite sur `feat/programs` : catalogue d'exos + programmes. 64 tests, build OK, parcours Playwright iPhone 13 OK (0 erreur console).
 - Prochaine étape : relecture/merge des PR ; réponses aux questions de phase 3 ; phase 3.
+- Phase 3 faite sur `feat/workout-logging` : saisie de séance. 104 tests, build OK, parcours Playwright iPhone 13 OK (0 erreur console).
+- Prochaine étape : relecture/merge ; phase 4 (backup JSON).
