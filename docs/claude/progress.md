@@ -8,3 +8,5 @@
 - Phase 1 mergée dans `dev`, en prod sur https://sport-track-ten.vercel.app.
 - Fait : workflow git dans CLAUDE.md ; nav passée à 4 onglets (Accueil, Programmes, Corps, Stats).
 - Prochaine étape : plan de la phase 2 (`feat/programs`).
+- Phase 2 faite sur `feat/programs` : catalogue d'exos + programmes. 64 tests, build OK, parcours Playwright iPhone 13 OK (0 erreur console).
+- Prochaine étape : relecture/merge des PR ; réponses aux questions de phase 3 ; phase 3.

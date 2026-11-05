@@ -16,3 +16,11 @@ Format : date — choix — pourquoi — alternatives écartées.
 - **2026-11-05 — Icônes générées depuis `public/favicon.svg`** via le Chromium de l'environnement (pas de dépendance). PNG pleins bords : iOS arrondit lui-même.
 - **2026-11-05 — Navigation à 4 onglets** (Accueil, Programmes, Corps, Stats) — décision du propriétaire. 6 onglets trop serrés en 390 px. Stats regroupe progression + exports ; la saisie de séance se lance depuis l'accueil ou un programme, pas d'onglet.
 - **2026-11-05 — Workflow git** : `dev` = production Vercel ; une branche par phase/tâche ; PR vers `dev` relue et mergée par le propriétaire ; jamais de push direct sur `dev`.
+- **2026-11-05 — Phase 2, règles produit (propriétaire)** : suppression d'un exo seulement s'il n'est utilisé nulle part (programme ou séance faite) ; renommage vers un nom existant bloqué (sans casse/accents/espaces) ; programme principal non supprimable ; nom de séance libre, défaut = lettre suivante, rotation selon l'ordre de la liste.
+- **2026-11-05 — Premier programme créé = principal automatiquement.** Évite un état « aucun principal » inutile.
+- **2026-11-05 — Éditeur de programme sur une seule page + feuilles en bas d'écran** (`<dialog>` natif). Peu d'écrans, tout à portée de pouce. Écarté : un écran par séance.
+- **2026-11-05 — Saisie rapide** : puces de fourchettes de reps, stepper de séries (défaut 3), reps par défaut = celles du dernier exo de la séance, « Superset avec l'exo précédent » proposé à l'ajout. Clavier texte pour les reps (le pavé numérique iOS n'a pas de tiret).
+- **2026-11-05 — Réordonnancement par boutons ↑ ↓.** Pas de lib de drag & drop.
+- **2026-11-05 — Sauvegarde immédiate** dans l'éditeur (nom au blur, jour au tap) : pas de bouton « Enregistrer » à oublier.
+- **2026-11-05 — Réactivité via `liveQuery` derrière un contrat `Observable` maison** : l'UI ne connaît pas Dexie ; une impl serveur pourra fournir le même contrat.
+- **2026-11-05 — Doublons et recherche calculés en mémoire** (catalogue < 200 exos). Pas de nom normalisé stocké.

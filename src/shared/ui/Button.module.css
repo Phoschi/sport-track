@@ -1,0 +1,17 @@
+.button {
+  min-height: var(--touch-target);
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-raised);
+  font-weight: 600;
+}
+
+.button:disabled { opacity: 0.4; }
+
+.primary { background: var(--color-primary-strong); border-color: var(--color-primary-strong); }
+.secondary { background: var(--color-surface-raised); }
+.danger { background: transparent; border-color: var(--color-danger); color: var(--color-danger); }
+.ghost { background: transparent; border-color: transparent; color: var(--color-secondary); }
+
+.fullWidth { width: 100%; }
