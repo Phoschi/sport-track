@@ -59,6 +59,21 @@ Le propriétaire décide du produit, de la direction et de l'architecture ; Clau
 - Pas de minuteur de repos.
 - Unité : kg uniquement, décimales autorisées (17,5).
 
+### Règles de saisie (validées le 2026-11-05)
+- Pas de séance libre : une séance se lance toujours depuis une séance d'un programme.
+- Le programme est figé pendant une séance lancée : pas d'ajout/remplacement d'exo. Restent possibles : série en plus, série de chauffe, sauter un exo.
+- Valeurs préremplies = suggestions. Une série ne compte que validée d'un tap sur ✓.
+- Saisie poids et reps : un simple champ chacun (pas de boutons +/−).
+- Série en plus par rapport à la dernière fois : reprend les valeurs de la dernière série connue, avec un rappel de la fourchette de reps prévue.
+- Nouveau segment : reprend le poids du segment précédent, à ajuster.
+- Superset : exos liés affichés groupés dans un même bloc.
+- Une seule séance en cours à la fois. App fermée → l'accueil propose « Reprendre ». Bouton « Annuler la séance » pour supprimer une séance lancée par erreur.
+- « Terminer » = séance finie, même incomplète : les exos sans série validée sont marqués « skip » dans le récap.
+- Séance d'un jour précédent encore en cours à l'ouverture : l'app propose de la terminer seulement si tous les exos sont remplis ; sinon rien.
+- Date d'une séance = date de début (heure de Paris).
+- Préremplissage et deltas : depuis la dernière séance où l'exo a des séries de travail validées (une séance où il est skip est ignorée).
+- Corriger une séance terminée : plus tard, via l'historique (pas en phase 3).
+
 ## Progression
 - Résumé d'une série de travail : poids max (segment le plus lourd) + reps totales.
 - Delta série par série vs la dernière fois que l'exo a été fait. Format : `+2,5kg`, `+0rep`, `-1rep`.

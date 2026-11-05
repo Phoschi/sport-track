@@ -61,6 +61,7 @@ export function ProgramPage() {
       {current.sessions.map((session) => (
         <SessionCard
           key={session.id}
+          programId={current.id}
           session={session}
           exercisesById={byId}
           onEditSession={() => setSheet({ kind: 'session', sessionId: session.id })}

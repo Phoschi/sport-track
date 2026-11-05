@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { Direction } from '../../../shared/domain/swapAdjacent';
 import { Button } from '../../../shared/ui/Button';
 import type { Exercise, SessionTemplate } from '../domain/types';
@@ -6,6 +7,7 @@ import { PlannedExerciseRow } from './PlannedExerciseRow';
 import styles from './SessionCard.module.css';
 
 type SessionCardProps = {
+  programId: string;
   session: SessionTemplate;
   exercisesById: ReadonlyMap<string, Exercise>;
   onEditSession: () => void;
@@ -15,7 +17,7 @@ type SessionCardProps = {
 };
 
 export function SessionCard(props: SessionCardProps) {
-  const { session, exercisesById, onEditSession, onAddExercise, onEditExercise, onMoveExercise } = props;
+  const { programId, session, exercisesById, onEditSession, onAddExercise, onEditExercise, onMoveExercise } = props;
   const lastIndex = session.exercises.length - 1;
 
   return (
@@ -39,6 +41,9 @@ export function SessionCard(props: SessionCardProps) {
         ))}
       </ol>
       <Button variant="ghost" fullWidth onClick={onAddExercise}>+ Exo</Button>
+      {session.exercises.length > 0 && (
+        <Link className={styles.start} to={`/workout/start/${programId}/${session.id}`}>▶ Démarrer la séance {session.name}</Link>
+      )}
     </article>
   );
 }
