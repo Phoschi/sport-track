@@ -41,3 +41,8 @@ export function mondayOfWeek(date: IsoDate): IsoDate {
 export function sundayOfWeek(date: IsoDate): IsoDate {
   return addDays(mondayOfWeek(date), 6);
 }
+
+/** Whole calendar days from `from` to `to` (negative if `to` is earlier). */
+export function daysBetween(from: IsoDate, to: IsoDate): number {
+  return Math.round((parseUtc(to).getTime() - parseUtc(from).getTime()) / 86_400_000);
+}
