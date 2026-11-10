@@ -30,18 +30,15 @@
 ## Plus tard
 - [ ] Corriger une séance terminée (historique)
 
-## Phase 4 — Backup JSON
-- [ ] Export complet + import (+ `lastExportAt`)
+## Phase 4 — Backup JSON ✅ (PR vers `dev`)
+- [x] Format versionné (`format`, `schemaVersion`, `exportedAt`, toutes les tables)
+- [x] Sauvegarde via la feuille de partage iOS (repli : téléchargement) + `lastExportAt`
+- [x] Restauration : validation du fichier, résumé, remplacement atomique (tout ou rien)
+- [x] Âge du dernier backup (règle des 7 jours prête pour l'accueil)
 
 ## Phase 5 — Accueil + rotation hebdo
 ## Phase 6 — Corps (poids, moyenne, mensurations)
 ## Phase 7 — Progression (deltas, PR, tendances, graphiques)
 ## Phase 8 — Exports Claude / PMH / historique
 
-## Questions produit ouvertes
-- Prochaine séance = première non faite de la semaine dans l'ordre, même si son jour est passé ? (phase 5)
-- Mensurations saisissables un autre jour que samedi ? (phase 6)
-- Seuil poids du corps : proposé |Δ| < 0,2 kg = stagne (phase 6)
-- Delta si nombre de séries différent ; delta d'une série à segments (proposé : sur le résumé) (phase 7)
-- PR à poids égal : reps du segment (proposé) ou reps totales ? (phase 7)
-- Tendance 4 séances : proposé = meilleur résumé récent vs le plus ancien des 4 (phase 7)
+Questions ouvertes : voir `questions.md`.

@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 import { database } from '../db/instance';
+import { BackupRepositoryProvider } from '../features/export/data/BackupRepositoryContext';
+import { createDexieBackupRepository } from '../features/export/data/dexieBackupRepository';
 import { createDexieExerciseRepository } from '../features/program/data/dexieExerciseRepository';
 import { createDexieProgramRepository } from '../features/program/data/dexieProgramRepository';
 import { ProgramRepositoriesProvider } from '../features/program/data/ProgramRepositoriesContext';
@@ -12,11 +14,14 @@ const programRepositories = {
   programs: createDexieProgramRepository(database),
 };
 const workoutRepository = createDexieWorkoutRepository(database);
+const backupRepository = createDexieBackupRepository(database);
 
 export function RepositoryProviders({ children }: { children: ReactNode }) {
   return (
     <ProgramRepositoriesProvider value={programRepositories}>
-      <WorkoutRepositoryProvider value={workoutRepository}>{children}</WorkoutRepositoryProvider>
+      <WorkoutRepositoryProvider value={workoutRepository}>
+        <BackupRepositoryProvider value={backupRepository}>{children}</BackupRepositoryProvider>
+      </WorkoutRepositoryProvider>
     </ProgramRepositoriesProvider>
   );
 }

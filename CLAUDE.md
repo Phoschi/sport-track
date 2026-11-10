@@ -19,6 +19,8 @@ Production : https://sport-track-ten.vercel.app
 - Aucune dépendance sans justification (la noter dans `decisions.md`). Simple > malin.
 - Fonctionnel > joli. Thème sombre via design tokens CSS centralisés.
 - Point produit ambigu → demander. Ne jamais trancher seul.
+  - Pendant le dev : pas d'interruption. Prendre un choix provisoire et réversible, le noter dans `docs/claude/questions.md`.
+  - Toutes les questions (y compris pour les phases suivantes) sont posées **en fin de rapport**.
 - Fin de chaque tâche : mettre à jour `roadmap.md` et `progress.md` (+ `decisions.md`, `bugs.md`, `tech-debt.md` si pertinent). Concis.
 
 ## Workflow git
@@ -46,3 +48,4 @@ npm run typecheck
 - `progress.md` — journal de session
 - `bugs.md` — bugs connus
 - `tech-debt.md` — raccourcis à reprendre
+- `questions.md` — questions ouvertes et choix provisoires à valider

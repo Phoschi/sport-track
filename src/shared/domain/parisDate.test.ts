@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { addDays, isoDayOfWeek, mondayOfWeek, sundayOfWeek, toParisDate } from './parisDate';
+import { addDays, daysBetween, isoDayOfWeek, mondayOfWeek, sundayOfWeek, toParisDate } from './parisDate';
 
 describe('toParisDate', () => {
   it('uses Paris time, not UTC, near midnight (winter, UTC+1)', () => {
@@ -33,5 +33,14 @@ describe('week bounds', () => {
   it('crosses month and DST boundaries', () => {
     expect(mondayOfWeek('2026-03-29')).toBe('2026-03-23');
     expect(addDays('2026-10-31', 1)).toBe('2026-11-01');
+  });
+});
+
+describe('daysBetween', () => {
+  it('counts calendar days across DST and month ends', () => {
+    expect(daysBetween('2026-10-24', '2026-10-31')).toBe(7);
+    expect(daysBetween('2026-03-28', '2026-03-30')).toBe(2);
+    expect(daysBetween('2026-11-05', '2026-11-05')).toBe(0);
+    expect(daysBetween('2026-11-05', '2026-11-01')).toBe(-4);
   });
 });
